@@ -1,2 +1,2 @@
 # RPI-IO
-Programa de automação e controle utilizando o Raspberry Pi
+Python backend and libs for the IO Digital
