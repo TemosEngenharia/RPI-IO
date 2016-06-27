@@ -7,7 +7,10 @@
     {{ form.hidden_tag() }}
     <p>
       Please enter your username:<br>
-      {{ form.user(size=46) }}<br>
+      {{ form.username(size=46) }}<br>
+      {% for error in form.username.erros %}
+        <span style="color: red;">[{{ error }}]</span>
+      {% endfor %}<br>
     </p>
     <p>{{ form.remember_me }} Remember Me</p>
     <p><input type="submit" value="Sign In"></p>
