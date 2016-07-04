@@ -1,2 +1,2 @@
-recursive-include RPi-IO/templates *
-recursive-include RPi-IO/static *
+# Incluide the license file
+include LICENSE
