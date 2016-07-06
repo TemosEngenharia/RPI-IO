@@ -7,12 +7,6 @@ from models import Event_Log
 from time import sleep
 from sys import stdout
 
-# Set up GPIO using BCM numbering
-GPIO.setmode(GPIO.BCM)
-GPIO.setwarnings(False)
-GPIO.setup(26, GPIO.OUT, initial=GPIO.LOW)
-GPIO.setup(27, GPIO.OUT, initial=GPIO.LOW)
-
 # Modules pins and description
 M1A = session.query(Module).filter(Module.name == 'M1A').first()
 M1B = session.query(Module).filter(Module.name == 'M1B').first()
@@ -42,6 +36,14 @@ input_pins = [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 16, 17, 18, 19, 20,
 
 # Statup outputs BCM pin
 output_pins = [26, 27]
+
+def main():
+    # Set up GPIO using BCM numbering
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setwarnings(False)
+    GPIO.setup(26, GPIO.OUT, initial=GPIO.LOW)
+    GPIO.setup(27, GPIO.OUT, initial=GPIO.LOW)
+
 
 def modo0():
     for pin in input_pins:
@@ -108,6 +110,7 @@ def switch_on(_M):
     GPIO.setmode(GPIO.BCM)
     GPIO.setwarnings(False)
     if GPIO.gpio_function(_M.gpio) == 0:
+        GPIO.setup(_M.gpio, GPIO.OUT, initial=GPIO.LOW)
         GPIO.output(_M.gpio, GPIO.HIGH)
         _M.status = True
         session.commit()
@@ -126,6 +129,7 @@ def switch_off(_M):
     GPIO.setmode(GPIO.BCM)
     GPIO.setwarnings(False)
     if GPIO.gpio_function(_M.gpio) == 0:
+        GPIO.setup(_M.gpio, GPIO.OUT, initial=GPIO.HIGH)
         GPIO.output(_M.gpio, GPIO.LOW)
         _M.status = False
         session.commit()
@@ -206,3 +210,5 @@ def cleanup_pins():
     GPIO.setwarnings(False)
     GPIO.cleanup()
 
+if __name__ == "__main__":
+    main()
