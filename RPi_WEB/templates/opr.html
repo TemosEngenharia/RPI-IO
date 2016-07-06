@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+{% for mod in modules %}
+<div class="row">
+  <h5>Módulo {{mod.name}}</h5>
+  {% if mod.io_type == "output" %}
+    <div class="col-md-2">
+    {% if mod.status == false %}
+      <a href="{{mod.name}}/on" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+    {% elif mod.status == true %}
+      <a href="{{mod.name}}/off" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+    {% endif %}
+    </div>
+    <div class="col-md-2">
+      <a href="{{mod.name}}/reset" class="btn btn-block btn-sm btn-primary" role="button">Reset</a>
+      <br>
+    </div>
+  {% elif mod.io_type == "empty" %}
+    <div class="col-md-2">
+      <h6>Status: {{mod.status}}</h6>
+    </div>
+  {% endif %}
+</div>
+{% endfor %}
+{% endblock %}

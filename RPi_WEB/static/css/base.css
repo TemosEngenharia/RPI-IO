@@ -1,0 +1,75 @@
+.nowrap {
+    white-space: nowrap;
+}
+@media (max-width: 48em) {
+    table .btn {
+        font-size: 0.75rem;
+        font-size: 3.5vw;
+    }
+}
+
+body {
+  padding-top: 3.6em;
+}
+
+
+header {
+  background-color: #F8F8F8;
+}
+
+header ul {
+  margin: 1rem;
+}
+
+header a,
+header li {
+  padding: 1.4rem 0;
+  color: #777;
+  font-weight: bold;
+}
+
+section#dash-board {
+}
+section#das-board .wrap-headline {
+  position: relative;
+  padding-top: 20%;
+  padding-bottom: 20%;
+}
+
+footer {
+  background-color: #191919;
+  color: #ADADAD;
+  margin-top: 3em;
+}
+
+footer h5,
+footer img {
+  margin-top: 5em;
+  font-weight: bold;
+}
+
+footer address {
+  margin-top: 5em;
+  margin-bottom: 5em;
+  color: #5A5A5A;
+}
+
+footer ul {
+  margin-bottom: 5em;
+}
+
+footer address strong {
+  color: #ADADAD;
+  display: block;
+  padding-bottom: 0.62em;
+}
+
+footer a {
+  font-weight: 300;
+  color: #5A5A5A;
+}
+
+footer a:hover {
+  text-decoration: none;
+  color: #FFF;
+}
