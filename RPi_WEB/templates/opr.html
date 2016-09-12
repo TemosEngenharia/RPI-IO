@@ -1,25 +1,605 @@
 {% extends "base.html" %}
 {% block content %}
-{% for mod in modules %}
-<div class="row">
-  <h5>Módulo {{mod.name}}</h5>
-  {% if mod.io_type == "output" %}
-    <div class="col-md-2">
-    {% if mod.status == false %}
-      <a href="{{mod.name}}/on" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
-    {% elif mod.status == true %}
-      <a href="{{mod.name}}/off" class="btn btn-block btn-sm btn-success" role="button">ON</a>
-    {% endif %}
+    <div class="slot-io col-md-5">
+      <h3 class="text-center">Módulo 01</h3>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            {% for mod in M1 %}
+              {% if mod.name == "M1A" %}
+                <div class="col-md-4 module-io">
+                  <h5 class="text-center">{{mod.name}}</h5>
+                  {% if mod.io_type == "output" %}
+                    <div class="col-sm-6 col">
+                      {% if mod.status == false %}
+                        <a href="{{mod.name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+                      {% elif mod.status == true %}
+                        <a href="{{mod.name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+                      {% endif %}
+                    </div>
+                    <div class="col-sm-6 col">
+                      <a href="{{mod.name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+                    </div>
+                  {% elif mod.io_type == "input" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.status}}</h6>
+                    </div>
+                  {% elif mod.io_type == "empty" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.io_type}}</h6>
+                    </div>
+                  {% endif %}
+                </div>
+              {% endif %}
+              {% if mod.name == "M1B" %}
+                <div class="col-md-4 module-io">
+                  <h5 class="text-center">{{mod.name}}</h5>
+                  {% if mod.io_type == "output" %}
+                    <div class="col-sm-6 col">
+                      {% if mod.status == false %}
+                        <a href="{{mod.name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+                      {% elif mod.status == true %}
+                        <a href="{{mod.name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+                      {% endif %}
+                    </div>
+                    <div class="col-sm-6 col">
+                      <a href="{{mod.name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+                    </div>
+                  {% elif mod.io_type == "input" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.status}}</h6>
+                    </div>
+                  {% elif mod.io_type == "empty" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.io_type}}</h6>
+                    </div>
+                  {% endif %}
+                </div>
+              {% endif %}
+              {% if mod.name == "M1C" %}
+                <div class="col-md-4 module-io">
+                  <h5 class="text-center">{{mod.name}}</h5>
+                  {% if mod.io_type == "output" %}
+                    <div class="col-sm-6 col">
+                      {% if mod.status == false %}
+                        <a href="{{mod.name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+                      {% elif mod.status == true %}
+                        <a href="{{mod.name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+                      {% endif %}
+                    </div>
+                    <div class="col-sm-6 col">
+                      <a href="{{mod.name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+                    </div>
+                  {% elif mod.io_type == "input" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.status}}</h6>
+                    </div>
+                  {% elif mod.io_type == "empty" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.io_type}}</h6>
+                    </div>
+                    {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col-md-2">
-      <a href="{{mod.name}}/reset" class="btn btn-block btn-sm btn-primary" role="button">Reset</a>
-      <br>
+    <div class="slot-io col-md-5">
+      <h3 class="text-center">Módulo 02</h3>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            {% for mod in M2 %}
+              {% if mod.name == "M2A" %}
+                <div class="col-md-4 module-io">
+                  <h5 class="text-center">{{mod.name}}</h5>
+                  {% if mod.io_type == "output" %}
+                    <div class="col-sm-6 col">
+                      {% if mod.status == false %}
+                        <a href="{{mod.name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+                      {% elif mod.status == true %}
+                        <a href="{{mod.name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+                      {% endif %}
+                    </div>
+                    <div class="col-sm-6 col">
+                      <a href="{{mod.name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+                    </div>
+                  {% elif mod.io_type == "input" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.status}}</h6>
+                    </div>
+                  {% elif mod.io_type == "empty" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.io_type}}</h6>
+                    </div>
+                  {% endif %}
+                </div>
+              {% endif %}
+              {% if mod.name == "M2B" %}
+                <div class="col-md-4 module-io">
+                  <h5 class="text-center">{{mod.name}}</h5>
+                  {% if mod.io_type == "output" %}
+                    <div class="col-sm-6 col">
+                      {% if mod.status == false %}
+                        <a href="{{mod.name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+                      {% elif mod.status == true %}
+                        <a href="{{mod.name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+                      {% endif %}
+                    </div>
+                    <div class="col-sm-6 col">
+                      <a href="{{mod.name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+                    </div>
+                  {% elif mod.io_type == "input" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.status}}</h6>
+                    </div>
+                  {% elif mod.io_type == "empty" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.io_type}}</h6>
+                    </div>
+                  {% endif %}
+                </div>
+              {% endif %}
+              {% if mod.name == "M2C" %}
+                <div class="col-md-4 module-io">
+                  <h5 class="text-center">{{mod.name}}</h5>
+                  {% if mod.io_type == "output" %}
+                    <div class="col-sm-6 col">
+                      {% if mod.status == false %}
+                        <a href="{{mod.name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+                      {% elif mod.status == true %}
+                        <a href="{{mod.name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+                      {% endif %}
+                    </div>
+                    <div class="col-sm-6 col">
+                      <a href="{{mod.name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+                    </div>
+                  {% elif mod.io_type == "input" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.status}}</h6>
+                    </div>
+                  {% elif mod.io_type == "empty" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.io_type}}</h6>
+                    </div>
+                    {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
     </div>
-  {% elif mod.io_type == "empty" %}
-    <div class="col-md-2">
-      <h6>Status: {{mod.status}}</h6>
+    <div class="slot-io col-md-5">
+      <h3 class="text-center">Módulo 03</h3>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            {% for mod in M3 %}
+              {% if mod.name == "M3A" %}
+                <div class="col-md-4 module-io">
+                  <h5 class="text-center">{{mod.name}}</h5>
+                  {% if mod.io_type == "output" %}
+                    <div class="col-sm-6 col">
+                      {% if mod.status == false %}
+                        <a href="{{mod.name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+                      {% elif mod.status == true %}
+                        <a href="{{mod.name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+                      {% endif %}
+                    </div>
+                    <div class="col-sm-6 col">
+                      <a href="{{mod.name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+                    </div>
+                  {% elif mod.io_type == "input" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.status}}</h6>
+                    </div>
+                  {% elif mod.io_type == "empty" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.io_type}}</h6>
+                    </div>
+                  {% endif %}
+                </div>
+              {% endif %}
+              {% if mod.name == "M3B" %}
+                <div class="col-md-4 module-io">
+                  <h5 class="text-center">{{mod.name}}</h5>
+                  {% if mod.io_type == "output" %}
+                    <div class="col-sm-6 col">
+                      {% if mod.status == false %}
+                        <a href="{{mod.name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+                      {% elif mod.status == true %}
+                        <a href="{{mod.name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+                      {% endif %}
+                    </div>
+                    <div class="col-sm-6 col">
+                      <a href="{{mod.name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+                    </div>
+                  {% elif mod.io_type == "input" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.status}}</h6>
+                    </div>
+                  {% elif mod.io_type == "empty" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.io_type}}</h6>
+                    </div>
+                  {% endif %}
+                </div>
+              {% endif %}
+              {% if mod.name == "M3C" %}
+                <div class="col-md-4 module-io">
+                  <h5 class="text-center">{{mod.name}}</h5>
+                  {% if mod.io_type == "output" %}
+                    <div class="col-sm-6 col">
+                      {% if mod.status == false %}
+                        <a href="{{mod.name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+                      {% elif mod.status == true %}
+                        <a href="{{mod.name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+                      {% endif %}
+                    </div>
+                    <div class="col-sm-6 col">
+                      <a href="{{mod.name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+                    </div>
+                  {% elif mod.io_type == "input" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.status}}</h6>
+                    </div>
+                  {% elif mod.io_type == "empty" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.io_type}}</h6>
+                    </div>
+                    {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
     </div>
-  {% endif %}
-</div>
-{% endfor %}
+    <div class="slot-io col-md-5">
+      <h3 class="text-center">Módulo 04</h3>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            {% for mod in M4 %}
+              {% if mod.name == "M4A" %}
+                <div class="col-md-4 module-io">
+                  <h5 class="text-center">{{mod.name}}</h5>
+                  {% if mod.io_type == "output" %}
+                    <div class="col-sm-6 col">
+                      {% if mod.status == false %}
+                        <a href="{{mod.name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+                      {% elif mod.status == true %}
+                        <a href="{{mod.name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+                      {% endif %}
+                    </div>
+                    <div class="col-sm-6 col">
+                      <a href="{{mod.name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+                    </div>
+                  {% elif mod.io_type == "input" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.status}}</h6>
+                    </div>
+                  {% elif mod.io_type == "empty" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.io_type}}</h6>
+                    </div>
+                  {% endif %}
+                </div>
+              {% endif %}
+              {% if mod.name == "M4B" %}
+                <div class="col-md-4 module-io">
+                  <h5 class="text-center">{{mod.name}}</h5>
+                  {% if mod.io_type == "output" %}
+                    <div class="col-sm-6 col">
+                      {% if mod.status == false %}
+                        <a href="{{mod.name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+                      {% elif mod.status == true %}
+                        <a href="{{mod.name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+                      {% endif %}
+                    </div>
+                    <div class="col-sm-6 col">
+                      <a href="{{mod.name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+                    </div>
+                  {% elif mod.io_type == "input" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.status}}</h6>
+                    </div>
+                  {% elif mod.io_type == "empty" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.io_type}}</h6>
+                    </div>
+                  {% endif %}
+                </div>
+              {% endif %}
+              {% if mod.name == "M4C" %}
+                <div class="col-md-4 module-io">
+                  <h5 class="text-center">{{mod.name}}</h5>
+                  {% if mod.io_type == "output" %}
+                    <div class="col-sm-6 col">
+                      {% if mod.status == false %}
+                        <a href="{{mod.name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+                      {% elif mod.status == true %}
+                        <a href="{{mod.name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+                      {% endif %}
+                    </div>
+                    <div class="col-sm-6 col">
+                      <a href="{{mod.name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+                    </div>
+                  {% elif mod.io_type == "input" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.status}}</h6>
+                    </div>
+                  {% elif mod.io_type == "empty" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.io_type}}</h6>
+                    </div>
+                    {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slot-io col-md-5">
+      <h3 class="text-center">Módulo 05</h3>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            {% for mod in M5 %}
+              {% if mod.name == "M5A" %}
+                <div class="col-md-4 module-io">
+                  <h5 class="text-center">{{mod.name}}</h5>
+                  {% if mod.io_type == "output" %}
+                    <div class="col-sm-6 col">
+                      {% if mod.status == false %}
+                        <a href="{{mod.name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+                      {% elif mod.status == true %}
+                        <a href="{{mod.name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+                      {% endif %}
+                    </div>
+                    <div class="col-sm-6 col">
+                      <a href="{{mod.name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+                    </div>
+                  {% elif mod.io_type == "input" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.status}}</h6>
+                    </div>
+                  {% elif mod.io_type == "empty" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.io_type}}</h6>
+                    </div>
+                  {% endif %}
+                </div>
+              {% endif %}
+              {% if mod.name == "M5B" %}
+                <div class="col-md-4 module-io">
+                  <h5 class="text-center">{{mod.name}}</h5>
+                  {% if mod.io_type == "output" %}
+                    <div class="col-sm-6 col">
+                      {% if mod.status == false %}
+                        <a href="{{mod.name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+                      {% elif mod.status == true %}
+                        <a href="{{mod.name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+                      {% endif %}
+                    </div>
+                    <div class="col-sm-6 col">
+                      <a href="{{mod.name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+                    </div>
+                  {% elif mod.io_type == "input" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.status}}</h6>
+                    </div>
+                  {% elif mod.io_type == "empty" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.io_type}}</h6>
+                    </div>
+                  {% endif %}
+                </div>
+              {% endif %}
+              {% if mod.name == "M5C" %}
+                <div class="col-md-4 module-io">
+                  <h5 class="text-center">{{mod.name}}</h5>
+                  {% if mod.io_type == "output" %}
+                    <div class="col-sm-6 col">
+                      {% if mod.status == false %}
+                        <a href="{{mod.name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+                      {% elif mod.status == true %}
+                        <a href="{{mod.name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+                      {% endif %}
+                    </div>
+                    <div class="col-sm-6 col">
+                      <a href="{{mod.name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+                    </div>
+                  {% elif mod.io_type == "input" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.status}}</h6>
+                    </div>
+                  {% elif mod.io_type == "empty" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.io_type}}</h6>
+                    </div>
+                    {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slot-io col-md-5">
+      <h3 class="text-center">Módulo 06</h3>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            {% for mod in M6 %}
+              {% if mod.name == "M6A" %}
+                <div class="col-md-4 module-io">
+                  <h5 class="text-center">{{mod.name}}</h5>
+                  {% if mod.io_type == "output" %}
+                    <div class="col-sm-6 col">
+                      {% if mod.status == false %}
+                        <a href="{{mod.name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+                      {% elif mod.status == true %}
+                        <a href="{{mod.name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+                      {% endif %}
+                    </div>
+                    <div class="col-sm-6 col">
+                      <a href="{{mod.name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+                    </div>
+                  {% elif mod.io_type == "input" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.status}}</h6>
+                    </div>
+                  {% elif mod.io_type == "empty" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.io_type}}</h6>
+                    </div>
+                  {% endif %}
+                </div>
+              {% endif %}
+              {% if mod.name == "M6B" %}
+                <div class="col-md-4 module-io">
+                  <h5 class="text-center">{{mod.name}}</h5>
+                  {% if mod.io_type == "output" %}
+                    <div class="col-sm-6 col">
+                      {% if mod.status == false %}
+                        <a href="{{mod.name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+                      {% elif mod.status == true %}
+                        <a href="{{mod.name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+                      {% endif %}
+                    </div>
+                    <div class="col-sm-6 col">
+                      <a href="{{mod.name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+                    </div>
+                  {% elif mod.io_type == "input" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.status}}</h6>
+                    </div>
+                  {% elif mod.io_type == "empty" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.io_type}}</h6>
+                    </div>
+                  {% endif %}
+                </div>
+              {% endif %}
+              {% if mod.name == "M6C" %}
+                <div class="col-md-4 module-io">
+                  <h5 class="text-center">{{mod.name}}</h5>
+                  {% if mod.io_type == "output" %}
+                    <div class="col-sm-6 col">
+                      {% if mod.status == false %}
+                        <a href="{{mod.name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+                      {% elif mod.status == true %}
+                        <a href="{{mod.name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+                      {% endif %}
+                    </div>
+                    <div class="col-sm-6 col">
+                      <a href="{{mod.name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+                    </div>
+                  {% elif mod.io_type == "input" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.status}}</h6>
+                    </div>
+                  {% elif mod.io_type == "empty" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.io_type}}</h6>
+                    </div>
+                    {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slot-io col-md-5">
+      <h3 class="text-center">Módulo 07</h3>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            {% for mod in M7 %}
+              {% if mod.name == "M7A" %}
+                <div class="col-md-4 module-io">
+                  <h5 class="text-center">{{mod.name}}</h5>
+                  {% if mod.io_type == "output" %}
+                    <div class="col-sm-6 col">
+                      {% if mod.status == false %}
+                        <a href="{{mod.name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+                      {% elif mod.status == true %}
+                        <a href="{{mod.name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+                      {% endif %}
+                    </div>
+                    <div class="col-sm-6 col">
+                      <a href="{{mod.name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+                    </div>
+                  {% elif mod.io_type == "input" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.status}}</h6>
+                    </div>
+                  {% elif mod.io_type == "empty" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.io_type}}</h6>
+                    </div>
+                  {% endif %}
+                </div>
+              {% endif %}
+              {% if mod.name == "M7B" %}
+                <div class="col-md-4 module-io">
+                  <h5 class="text-center">{{mod.name}}</h5>
+                  {% if mod.io_type == "output" %}
+                    <div class="col-sm-6 col">
+                      {% if mod.status == false %}
+                        <a href="{{mod.name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+                      {% elif mod.status == true %}
+                        <a href="{{mod.name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+                      {% endif %}
+                    </div>
+                    <div class="col-sm-6 col">
+                      <a href="{{mod.name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+                    </div>
+                  {% elif mod.io_type == "input" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.status}}</h6>
+                    </div>
+                  {% elif mod.io_type == "empty" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.io_type}}</h6>
+                    </div>
+                  {% endif %}
+                </div>
+              {% endif %}
+              {% if mod.name == "M7C" %}
+                <div class="col-md-4 module-io">
+                  <h5 class="text-center">{{mod.name}}</h5>
+                  {% if mod.io_type == "output" %}
+                    <div class="col-sm-6 col">
+                      {% if mod.status == false %}
+                        <a href="{{mod.name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+                      {% elif mod.status == true %}
+                        <a href="{{mod.name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+                      {% endif %}
+                    </div>
+                    <div class="col-sm-6 col">
+                      <a href="{{mod.name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+                    </div>
+                  {% elif mod.io_type == "input" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.status}}</h6>
+                    </div>
+                  {% elif mod.io_type == "empty" %}
+                    <div class="col-md-12">
+                      <h6 class="text-center">Status: {{mod.io_type}}</h6>
+                    </div>
+                    {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
 {% endblock %}

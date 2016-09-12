@@ -1,4 +1,4 @@
-#!/home/pi/.virtualenvs/RPi-IO/bin/python
+#!/var/ramdisk/RPi-IO/venv/bin/python
 from time import sleep
 import sys
 

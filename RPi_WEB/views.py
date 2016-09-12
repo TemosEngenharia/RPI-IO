@@ -31,6 +31,14 @@ M7A = session.query(Module).filter(Module.name == 'M7A').first()
 M7B = session.query(Module).filter(Module.name == 'M7B').first()
 M7C = session.query(Module).filter(Module.name == 'M7C').first()
 
+M1 = [M1A, M1B, M1C]
+M2 = [M2A, M2B, M2C]
+M3 = [M3A, M3B, M3C]
+M4 = [M4A, M4B, M4C]
+M5 = [M5A, M5B, M5C]
+M6 = [M6A, M6B, M6C]
+M7 = [M7A, M7B, M7C]
+
 modules = [M1A, M1B, M1C,
            M2A, M2B, M2C,
            M3A, M3B, M3C,
@@ -39,24 +47,29 @@ modules = [M1A, M1B, M1C,
            M6A, M6B, M6C,
            M7A, M7B, M7C]
 
-
 @app.route("/")
 def index():
     return render_template('index.html')
 
+@app.route("/dashboard")
+def dashboard():
+    return render_template('dashboard.html')
+
 @app.route("/opr")
 def opr():
-    return render_template('opr.html', modules=modules)
+    return render_template('opr.html', M1=M1, M2=M2, M3=M3, M4=M4, M5=M5, M6=M6, M7=M7, modules=modules)
 
 @app.route("/<mod_name>/<action>")
 def action(mod_name, action):
     for mod in modules:
         if mod_name == mod.name:
             if action == 'on':
-                switch_on(mod)
+               switch_on(mod)
             if action == 'off':
                switch_off(mod)
-    return redirect("/opr", code=302)
+            if action == 'reset':
+               reset_pin(mod, 3)
+    return redirect("/opr")
 
 @app.route('/cad')
 def cad():
@@ -65,3 +78,4 @@ def cad():
 @app.route('/log')
 def log():
     return render_template('log.html')
+
