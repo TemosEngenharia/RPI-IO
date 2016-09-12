@@ -164,7 +164,7 @@ def discovery_mods(_MA, _MB, _MC):
     GPIO.setmode(GPIO.BCM)
     GPIO.setwarnings(False)
 
-    if GPIO.input(_MA.gpio) == 1 and GPIO.input(_MB.gpio) == 0:
+    if GPIO.input(_MA.gpio) == 0 and GPIO.input(_MB.gpio) == 1:
         GPIO.setup(_MA.gpio, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
         GPIO.setup(_MB.gpio, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
         GPIO.setup(_MC.gpio, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
@@ -175,7 +175,7 @@ def discovery_mods(_MA, _MB, _MC):
         _MC.io_type = 'input'
         _MC.rpull = False
         session.commit()
-    elif GPIO.input(_MA.gpio) == 0 and GPIO.input(_MB.gpio) == 1:
+    elif GPIO.input(_MA.gpio) == 1 and GPIO.input(_MB.gpio) == 0:
         GPIO.setup(_MA.gpio, GPIO.OUT, initial=GPIO.LOW)
         GPIO.setup(_MB.gpio, GPIO.OUT, initial=GPIO.LOW)
         GPIO.setup(_MC.gpio, GPIO.OUT, initial=GPIO.LOW)
@@ -212,3 +212,4 @@ def cleanup_pins():
 
 if __name__ == "__main__":
     main()
+

@@ -1,3 +1,38 @@
+section#input-modules {
+}
+
+.slot-io {
+  background-color: #efefef;
+  color: #000000;
+  border-radius:5px;
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
+  margin-top: 0.1rem;
+  margin-bottom: 0.1rem;
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
+  border-style: outset;
+  border-color: #cccccc;
+}
+.module-io {
+  background-color: #dddddd;
+  color: #000000;
+  border-radius:5px;
+  margin-left: 0rem;
+  margin-right: 0rem;
+  padding-left: 0em;
+  padding-right: 0em;
+  padding-top: 0em;
+  padding-bottom: 0.1em;
+  border-style: solid;
+  border-color: #cccccc;
+}
+
+.col:not(:first-child),.col:not(:last-child) {
+  padding-right:1px;
+  padding-left:1px;
+}
+
 .nowrap {
     white-space: nowrap;
 }
@@ -26,14 +61,6 @@ header li {
   padding: 1.4rem 0;
   color: #777;
   font-weight: bold;
-}
-
-section#dash-board {
-}
-section#das-board .wrap-headline {
-  position: relative;
-  padding-top: 20%;
-  padding-bottom: 20%;
 }
 
 footer {
