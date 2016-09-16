@@ -5,11 +5,11 @@ section#input-modules {
   background-color: #efefef;
   color: #000000;
   border-radius:5px;
-  margin-left: 0.1rem;
-  margin-right: 0.1rem;
-  margin-top: 0.1rem;
-  margin-bottom: 0.1rem;
-  padding-top: 0.1em;
+  margin-left: 0rem;
+  margin-right: 0rem;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  padding-top: 0em;
   padding-bottom: 0.1em;
   border-style: outset;
   border-color: #cccccc;
@@ -17,7 +17,7 @@ section#input-modules {
 .module-io {
   background-color: #dddddd;
   color: #000000;
-  border-radius:5px;
+  border-radius:2px;
   margin-left: 0rem;
   margin-right: 0rem;
   padding-left: 0em;
@@ -25,7 +25,7 @@ section#input-modules {
   padding-top: 0em;
   padding-bottom: 0.1em;
   border-style: solid;
-  border-color: #cccccc;
+  border-color: #eeeeee;
 }
 
 .col:not(:first-child),.col:not(:last-child) {

@@ -3,6 +3,7 @@ from flask import redirect
 from RPi_IO.rpi_io import switch_on
 from RPi_IO.rpi_io import switch_off
 from RPi_IO.rpi_io import reset_pin
+from RPi_IO.rpi_io import softreset
 from RPi_IO.models import Device
 from RPi_IO.models import Module
 from RPi_IO.models import Event_Log
@@ -57,7 +58,7 @@ def dashboard():
 
 @app.route("/opr")
 def opr():
-    return render_template('opr.html', M1=M1, M2=M2, M3=M3, M4=M4, M5=M5, M6=M6, M7=M7, modules=modules)
+    return render_template('opr_abastece.html', M1=M1, M2=M2, M3=M3, M4=M4, M5=M5, M6=M6, M7=M7, modules=modules)
 
 @app.route("/<mod_name>/<action>")
 def action(mod_name, action):
@@ -69,6 +70,11 @@ def action(mod_name, action):
                switch_off(mod)
             if action == 'reset':
                reset_pin(mod, 3)
+            if action == 'softreset':
+               if mod_name ==  M2B:
+                   softreset('192.168.1.21')
+               elif mod_name == M4A:
+                   softreset('192.168.1.10')
     return redirect("/opr")
 
 @app.route('/cad')

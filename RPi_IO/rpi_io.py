@@ -153,6 +153,11 @@ def reset_pin(_M, _time):
     else:
         print 'ERROR! This pin is set as a input'
 
+def softreset(_host):
+    from subprocess import call
+    call(["net", "rpc", "shutdown", "-I", _host, "-U", "eduardo@mudar@123"])
+    print call(["net", "rpc", "shutdown", "-I", _host, "-U", "eduardo@mudar@123"])
+
 def discovery_mods(_MA, _MB, _MC):
     import RPi.GPIO as GPIO
     from models import session
