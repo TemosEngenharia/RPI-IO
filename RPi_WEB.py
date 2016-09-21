@@ -32,7 +32,7 @@ class FotsTransLogger(TransLogger):
 
 def run_server():
     app_logged = TransLogger(app)
-    #Daemonizer(cherrypy.engine).subscribe()
+    Daemonizer(cherrypy.engine).subscribe()
     cherrypy.tree.graft(app_logged, '/')
     cherrypy.config.update({
         'engine.autoreload.on': True,
