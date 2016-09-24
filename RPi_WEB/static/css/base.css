@@ -1,6 +1,14 @@
 section#input-modules {
 }
 
+.status-success {
+  background-color: #5cb85c;
+}
+
+.status-danger {
+  background-color: #d9534f;
+}
+
 .slot-io {
   background-color: #efefef;
   color: #000000;
@@ -100,3 +108,4 @@ footer a:hover {
   text-decoration: none;
   color: #FFF;
 }
+

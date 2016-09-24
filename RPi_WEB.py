@@ -2,9 +2,13 @@
 import cherrypy
 import time
 from paste.translogger import TransLogger
+from paste.exceptions.errormiddleware import ErrorMiddleware
 from cherrypy.process.plugins import Daemonizer
 from RPi_WEB import app
 from RPi_WEB import views
+
+
+debug_flag = True
 
 class FotsTransLogger(TransLogger):
     def write_log(self, environ, method, req_uri, start, status, bytes):
@@ -31,9 +35,21 @@ class FotsTransLogger(TransLogger):
         self.logger.log(self.logging_level, message)
 
 def run_server():
-    app_logged = TransLogger(app)
+    log_format= (
+                 '[%(time)s] REQUES %(REQUEST_METHOD)s %(status)s %(REQUEST_URI)s '
+                 '(%(REMOTE)ADDR)s) %(bytes)s'
+                )
+    app_logged = FotsTransLogger(app)
+    app_logged = ErrorMiddleware(app, debug=debug_flag)
+    errlog = open('http-tracebacks.log', 'a', 0)
+
+    def app_logged2(environ, start_response):
+        environ['wsgi.errors'] = errlog
+        return app_logged(environ, start_response)
+
+
     Daemonizer(cherrypy.engine).subscribe()
-    cherrypy.tree.graft(app_logged, '/')
+    cherrypy.tree.graft(app_logged2, '/')
     cherrypy.config.update({
         'engine.autoreload.on': True,
         'log.screen': True,

@@ -155,8 +155,7 @@ def reset_pin(_M, _time):
 
 def softreset(_host):
     from subprocess import call
-    call(["net", "rpc", "shutdown", "-I", _host, "-U", "eduardo%mudar@123"])
-    print call(["net", "rpc", "shutdown", "-I", _host, "-U", "eduardo%mudar@123"])
+    call(["net", "rpc", "shutdown", "-r", "-I", "192.168.1.21", "-U", "Administrador%SemParar"])
 
 def discovery_mods(_MA, _MB, _MC):
     import RPi.GPIO as GPIO

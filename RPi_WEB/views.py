@@ -1,3 +1,4 @@
+import subprocess
 from flask import render_template
 from flask import redirect
 from RPi_IO.rpi_io import switch_on
@@ -71,10 +72,18 @@ def action(mod_name, action):
             if action == 'reset':
                reset_pin(mod, 3)
             if action == 'softreset':
-               if mod_name ==  M2B:
-                   softreset('192.168.1.21')
-               elif mod_name == M4A:
-                   softreset('192.168.1.10')
+               if mod.name ==  'M3C':
+                   cmd = ["/usr/bin/net", "rpc", "shutdown", "-r", "-f", "-t", "1", "-I", "192.168.1.21", "-U", "Administrador%SemParar"]
+                   p = subprocess.Popen(cmd, stdout = subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
+                   out,err = p.communicate()
+                   if err:
+                       return err
+               elif mod.name == 'M5A':
+                   cmd = ["/usr/bin/net", "rpc", "shutdown", "-r", "-f", "-t", "1", "-I", "192.168.1.10", "-U", "Administrador%SemParar"]
+                   p = subprocess.Popen(cmd, stdout = subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
+                   out,err = p.communicate()
+                   if err:
+                       return err
     return redirect("/opr")
 
 @app.route('/cad')
