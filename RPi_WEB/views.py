@@ -53,10 +53,6 @@ modules = [M1A, M1B, M1C,
 def index():
     return render_template('index.html')
 
-@app.route("/dashboard")
-def dashboard():
-    return render_template('dashboard.html')
-
 @app.route("/opr")
 def opr():
     return render_template('opr_abastece.html', M1=M1, M2=M2, M3=M3, M4=M4, M5=M5, M6=M6, M7=M7, modules=modules)
@@ -73,14 +69,14 @@ def action(mod_name, action):
                reset_pin(mod, 3)
             if action == 'softreset':
                if mod.name ==  'M3C':
-                   cmd = ["/usr/bin/net", "rpc", "shutdown", "-r", "-f", "-t", "1", "-I", "192.168.1.21", "-U", "Administrador%SemParar"]
-                   p = subprocess.Popen(cmd, stdout = subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
+                   cmd = ["net", "rpc", "shutdown", "-r", "-f", "-t", "1", "-I", "192.168.1.21", "-U", "Administrador%SemParar"]
+                   p = subprocess.Popen(cmd, stdout = subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
                    out,err = p.communicate()
                    if err:
                        return err
                elif mod.name == 'M5A':
-                   cmd = ["/usr/bin/net", "rpc", "shutdown", "-r", "-f", "-t", "1", "-I", "192.168.1.10", "-U", "Administrador%SemParar"]
-                   p = subprocess.Popen(cmd, stdout = subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
+                   cmd = ["net", "rpc", "shutdown", "-r", "-f", "-t", "1", "-I", "192.168.1.10", "-U", "Administrador%SemParar"]
+                   p = subprocess.Popen(cmd, stdout = subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
                    out,err = p.communicate()
                    if err:
                        return err

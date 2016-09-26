@@ -52,7 +52,7 @@ def run_server():
     cherrypy.tree.graft(app_logged2, '/')
     cherrypy.config.update({
         'engine.autoreload.on': True,
-        'log.screen': True,
+        'log.screen': False,
         'server.socket_port': 8080,
         'server.socket_host': '0.0.0.0'
     })
