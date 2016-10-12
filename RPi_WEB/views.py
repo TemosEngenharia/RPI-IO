@@ -69,14 +69,14 @@ def action(mod_name, action):
                reset_pin(mod, 3)
             if action == 'softreset':
                if mod.name ==  'M3C':
-                   cmd = ["net", "rpc", "shutdown", "-r", "-f", "-t", "1", "-I", "192.168.1.21", "-U", "Administrador%SemParar"]
-                   p = subprocess.Popen(cmd, stdout = subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
+                   cmd = '/usr/bin/net rpc shutdown -r -f -t 1 -I 192.168.1.21 -U Administrador%SemParar'
+                   p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
                    out,err = p.communicate()
                    if err:
                        return err
                elif mod.name == 'M5A':
-                   cmd = ["net", "rpc", "shutdown", "-r", "-f", "-t", "1", "-I", "192.168.1.10", "-U", "Administrador%SemParar"]
-                   p = subprocess.Popen(cmd, stdout = subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
+                   cmd = '/usr/bin/net rpc shutdown -r -f -t 1 -I 192.168.1.10 -U Administrador%SemParar'
+                   p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
                    out,err = p.communicate()
                    if err:
                        return err

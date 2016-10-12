@@ -47,7 +47,7 @@ def temp_update():
             failed = False
             latency = rawPingData[1][index + 5:]
             latency = latency[:latency.find(' ')]
-    ret = rrdtool.update('/var/ramdisk/var/net.rrd','N:'+latency)
+    ret = rrdtool.update('/var/ramdisk/var/net.rrd','N:'+str(latency))
     if ret:
         print rrdtool.error()
 

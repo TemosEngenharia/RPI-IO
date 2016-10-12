@@ -1,3 +1,4 @@
+<meta http-equiv="refresh" content="5; URL=/opr">
 {% extends "base.html" %}
 {% block content %}
   <div class="row">
@@ -126,9 +127,11 @@
         <h5 class="text-center"><b>Switch 01</b></h5>
         <div class="col-sm-6 col">
           {% if M4[0].status == false %}
-            <a href="{{M4[0].name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+            <!--<a href="{{M4[0].name}}/on" class="btn btn-block btn-sm btn-success.disable" role="button">ON</a>-->
+            <a href="#" class="btn btn-block btn-sm btn-success.disable" role="button">ON</a>
           {% elif M4[0].status == true %}
-            <a href="{{M4[0].name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+            <!--<a href="{{M4[0].name}}/off" class="btn btn-block btn-sm btn-danger.disable" role="button">OFF</a>-->
+            <a href="#" class="btn btn-block btn-sm btn-danger.disable" role="button">OFF</a>
           {% endif %}
         </div>
         <div class="col-sm-6 col">
@@ -136,12 +139,14 @@
         </div>
       </div>
       <div class="module-io row">
-        <h5 class="text-center"><b>Switch 02</b></h5>
+        <h5 class="text-center"><b>Vago</b></h5>
         <div class="col-sm-6 col">
           {% if M4[1].status == false %}
-            <a href="{{M4[1].name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+            <!--<a href="{{M4[1].name}}/on" class="btn btn-block btn-sm btn-success.disable" role="button">ON</a>-->
+            <a href="#" class="btn btn-block btn-sm btn-success.disable" role="button">ON</a>
           {% elif M4[1].status == true %}
-            <a href="{{M4[1].name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+            <!--<a href="{{M4[1].name}}/off" class="btn btn-block btn-sm btn-danger.disable" role="button">OFF</a>-->
+            <a href="#" class="btn btn-block btn-sm btn-danger.disable" role="button">OFF</a>
           {% endif %}
         </div>
         <div class="col-sm-6 col">
@@ -177,9 +182,11 @@
         <h5 class="text-center"><b>Modem ADSL</b></h5>
         <div class="col-sm-6 col">
           {% if M5[1].status == false %}
-            <a href="{{M5[1].name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+            <!--<a href="{{M5[1].name}}/on" class="btn btn-block btn-sm btn-success.disable" role="button">ON</a>-->
+            <a href="#" class="btn btn-block btn-sm btn-success.disable" role="button">ON</a>
           {% elif M5[1].status == true %}
-            <a href="{{M5[1].name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+            <!--<a href="{{M5[1].name}}/off" class="btn btn-block btn-sm btn-danger.disable" role="button">OFF</a>-->
+            <a href="#" class="btn btn-block btn-sm btn-danger.disable" role="button">OFF</a>
           {% endif %}
         </div>
         <div class="col-sm-6 col">
@@ -190,9 +197,11 @@
         <h5 class="text-center"><b>Router Hongdian</b></h5>
         <div class="col-sm-6 col">
           {% if M5[2].status == false %}
-            <a href="{{M5[2].name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+            <!--<a href="{{M5[2].name}}/on" class="btn btn-block btn-sm btn-success.disable" role="button">ON</a>-->
+            <a href="#" class="btn btn-block btn-sm btn-success.disable" role="button">ON</a>
           {% elif M5[2].status == true %}
-            <a href="{{M5[2].name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+            <!--<a href="{{M5[2].name}}/off" class="btn btn-block btn-sm btn-danger.disable" role="button">OFF</a>-->
+            <a href="#" class="btn btn-block btn-sm btn-danger.disable" role="button">OFF</a>
           {% endif %}
         </div>
         <div class="col-sm-6 col">
@@ -204,8 +213,8 @@
   <div class="row">
     <div class="slot-io col-md-12">
       <h5 class="text-center"><b>Monitoramento</b></h5>
-      <div class="module-io col-md-4">
-        <h5 class="text-center"><b>Entrada No-break Pista</b></h5>
+      <div class="module-io col-md-6">
+        <h5 class="text-center"><b>Entrada No-break</b></h5>
         {% if M7[0].status == false %}
           <div class="status-success col-md-10 col-md-offset-1">
             <h6 class="text-center"><b>OK</b></h6>
@@ -216,8 +225,8 @@
           </div>
         {% endif %}
       </div>
-      <div class="module-io col-md-4">
-        <h5 class="text-center"><b>Saída No-break Pista</b></h5>
+      <div class="module-io col-md-6">
+        <h5 class="text-center"><b>Saída No-break</b></h5>
         {% if M7[1].status == false %}
           <div class="status-success col-md-10 col-md-offset-1">
             <h6 class="text-center"><b>OK</b></h6>
@@ -228,6 +237,7 @@
           </div>
         {% endif %}
       </div>
+      <!--
       <div class="module-io col-md-4">
         <h5 class="text-center"><b>Saída No-break Servidor</b></h5>
         {% if M7[2].status == false %}
@@ -241,6 +251,7 @@
         {% endif %}
         </div>
       </div>
+      -->
     </div>
   </div>
 {% endblock %}
