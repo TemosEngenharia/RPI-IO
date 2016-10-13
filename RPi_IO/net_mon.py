@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import sys
 import os.path
+import logging
 import RPi.GPIO as GPIO
 from models import session
 from models import Device
@@ -20,6 +21,8 @@ SEMPARAR_ADDR = '172.19.254.254'
 HONGDIAN_ADDR = '172.19.254.1'
 NET_ADDR = '8.8.8.8'
 
+logging.basicConfig(filename='/var/log/net_mon',level=logging.DEBUG)
+
 def main(argv):
     if len(sys.argv) > 3 or len(sys.argv) <= 1:
        print '\nusage: net_mon.py start | stop\n'
@@ -34,7 +37,7 @@ def main(argv):
 
 def check(_ADDR):
     # Perform the ping using the system ping command (one ping only)
-    rawPingFile = os.popen('ping -c 5 %s' % (_ADDR))
+    rawPingFile = os.popen('/bin/ping -c 5 %s' % (_ADDR))
     rawPingData = rawPingFile.readlines()
     rawPingFile.close()
     # Extract the ping time
@@ -48,7 +51,8 @@ def check(_ADDR):
         else:
             packet_loss = rawPingData[len_raw - 2][index - 4:index]
             packet_loss = int(packet_loss[packet_loss.find(' '):])
-            if packet_loss < 50:
+            logging.info('Packet Loss: %s', packet_loss)
+            if packet_loss > 50:
                 return False
             else:
                 return True
@@ -57,18 +61,18 @@ def start():
     while True:
         if check(NET_ADDR):
             if check(SEMPARAR_ADDR):
-                print "Tudo OK"
+                logging.info("Tudo OK")
             else:
-                print "Problema somente Sem Parar: ", SEMPARAR_ADDR
+                logging.info("Problema somente Sem Parar: " + SEMPARAR_ADDR)
                 reboot(HONGDIAN, 10)
                 sleep(600)
         else:
             if check(HONGDIAN_ADDR) and check(SEMPARAR_ADDR):
-                print "Problema somente Internet"
+                logging.info("Problema somente Internet")
                 reboot(ADSL, 10)
                 sleep(600)
             else:
-                print "Problema HONGDIAN para frente"
+                logging.info("Problema HONGDIAN para frente")
                 reboot(ADSL, 10)
                 reboot(HONGDIAN, 10)
                 sleep(600)
