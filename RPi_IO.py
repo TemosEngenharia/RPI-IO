@@ -1,4 +1,4 @@
-#!/home/pi/.virtualenvs/RPi-IO/bin/python
+#!/var/ramdisk/RPi-IO/venv/bin/python
 from time import sleep
 import sys
 
@@ -19,66 +19,15 @@ def main(argv):
 def start():
     from RPi_IO import rpi_io
     from RPi_IO import models
-    from RPi_WEB import app
+    rpi_io.main()
     rpi_io.modo0()
-    print "Modo 1 e 3 segundos"
-    sleep(3)
     rpi_io.modo1()
-    print "Modo 3 em 10 segundos"
-    sleep(10)
     rpi_io.modo3()
-    """
-    rpi_io.switch_on(rpi_io.M1A)
-    sleep(1)
-    rpi_io.switch_on(rpi_io.M1B)
-    sleep(1)
-    rpi_io.switch_on(rpi_io.M1C)
-    sleep(1)
-
-    rpi_io.switch_on(rpi_io.M2A)
-    sleep(1)
-    rpi_io.switch_on(rpi_io.M2B)
-    sleep(1)
-    rpi_io.switch_on(rpi_io.M2C)
-    sleep(1)
-
-    rpi_io.switch_on(rpi_io.M3A)
-    sleep(1)
-    rpi_io.switch_on(rpi_io.M3B)
-    sleep(1)
-    rpi_io.switch_on(rpi_io.M3C)
-    sleep(5)
-
-    rpi_io.switch_off(rpi_io.M1A)
-    sleep(1)
-    rpi_io.switch_off(rpi_io.M1B)
-    sleep(1)
-    rpi_io.switch_off(rpi_io.M1C)
-    sleep(1)
-
-    rpi_io.switch_off(rpi_io.M2A)
-    sleep(1)
-    rpi_io.switch_off(rpi_io.M2B)
-    sleep(1)
-    rpi_io.switch_off(rpi_io.M2C)
-    sleep(1)
-
-    rpi_io.switch_off(rpi_io.M3A)
-    sleep(1)
-    rpi_io.switch_off(rpi_io.M3B)
-    sleep(1)
-    rpi_io.switch_off(rpi_io.M3C)
-    sleep(5)
-
-    rpi_io.reset_pin(rpi_io.M1A, 1)
-    rpi_io.reset_pin(rpi_io.M2A, 3)
-    rpi_io.reset_pin(rpi_io.M3A, 5)
-    """
-    app.run(host='0.0.0.0', port=80, debug = True)
 
 def stop():
     from RPi_IO import rpi_io
     from RPi_IO import models
+    rpi_io.main()
     rpi_io.cleanup_pins()
 
 def rebase():
@@ -90,7 +39,4 @@ def resetdb():
     reset_db()
 
 if __name__ == "__main__":
-    from RPi_IO import rpi_io
-    from RPi_IO import models
     main(sys.argv[1:])
-

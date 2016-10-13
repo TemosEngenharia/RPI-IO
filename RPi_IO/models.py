@@ -10,6 +10,7 @@ from sqlalchemy import ForeignKey
 from sqlalchemy import Sequence
 from sqlalchemy.sql import func
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.pool import StaticPool
 from migrate.versioning import api
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -18,7 +19,7 @@ SQLALCHEMY_DATABASE_URI = 'sqlite:///%s/../../var/sqlite/RPi_IO.db' % APP_DIR
 SQLALCHEMY_MIGRATE_REPO = '%s/../../var/sqlite/db_repository' % APP_DIR
 SQL_DATABASE_PATH = '%s/../../var/sqlite/RPi_IO.db' % APP_DIR
 
-engine = create_engine(SQLALCHEMY_DATABASE_URI)
+engine = create_engine(SQLALCHEMY_DATABASE_URI, connect_args={'check_same_thread':False}, poolclass=StaticPool)
 Base = declarative_base()
 Session = sessionmaker(bind=engine)
 session = Session()
@@ -174,32 +175,28 @@ def reset_db():
     # Session = sessionmaker(bind=engine)
     # session = Session()
 
-    for name, gpio in session.query(Module.name, Module.gpio):
-        print(name, gpio)
-    session.query(Module).filter(Module.name == 'M1A').update({'gpio': 8})
-    session.query(Module).filter(Module.name == 'M1B').update({"gpio": 7})
-    session.query(Module).filter(Module.name == 'M1C').update({"gpio": 11})
-    session.query(Module).filter(Module.name == 'M2A').update({"gpio": 9})
-    session.query(Module).filter(Module.name == 'M2B').update({"gpio": 10})
-    session.query(Module).filter(Module.name == 'M2C').update({"gpio": 5})
-    session.query(Module).filter(Module.name == 'M3A').update({"gpio": 6})
-    session.query(Module).filter(Module.name == 'M3B').update({"gpio": 12})
-    session.query(Module).filter(Module.name == 'M3C').update({"gpio": 13})
-    session.query(Module).filter(Module.name == 'M4A').update({"gpio": 0})
-    session.query(Module).filter(Module.name == 'M4B').update({"gpio": 1})
-    session.query(Module).filter(Module.name == 'M4C').update({"gpio": 16})
-    session.query(Module).filter(Module.name == 'M5A').update({"gpio": 17})
-    session.query(Module).filter(Module.name == 'M5B').update({"gpio": 18})
-    session.query(Module).filter(Module.name == 'M5C').update({"gpio": 19})
-    session.query(Module).filter(Module.name == 'M6A').update({"gpio": 20})
-    session.query(Module).filter(Module.name == 'M6B').update({"gpio": 21})
-    session.query(Module).filter(Module.name == 'M6C').update({"gpio": 22})
-    session.query(Module).filter(Module.name == 'M7A').update({"gpio": 23})
-    session.query(Module).filter(Module.name == 'M7B').update({"gpio": 24})
-    session.query(Module).filter(Module.name == 'M7C').update({"gpio": 25})
+    session.query(Module).filter(Module.name == 'M1A').update({'gpio': 8, 'io_type': 'input'})
+    session.query(Module).filter(Module.name == 'M1B').update({"gpio": 7, 'io_type': 'input'})
+    session.query(Module).filter(Module.name == 'M1C').update({"gpio": 11, 'io_type': 'input'})
+    session.query(Module).filter(Module.name == 'M2A').update({"gpio": 9, 'io_type': 'input'})
+    session.query(Module).filter(Module.name == 'M2B').update({"gpio": 10, 'io_type': 'input'})
+    session.query(Module).filter(Module.name == 'M2C').update({"gpio": 5, 'io_type': 'input'})
+    session.query(Module).filter(Module.name == 'M3A').update({"gpio": 6, 'io_type': 'input'})
+    session.query(Module).filter(Module.name == 'M3B').update({"gpio": 12, 'io_type': 'input'})
+    session.query(Module).filter(Module.name == 'M3C').update({"gpio": 13, 'io_type': 'input'})
+    session.query(Module).filter(Module.name == 'M4A').update({"gpio": 0, 'io_type': 'input'})
+    session.query(Module).filter(Module.name == 'M4B').update({"gpio": 1, 'io_type': 'input'})
+    session.query(Module).filter(Module.name == 'M4C').update({"gpio": 16, 'io_type': 'input'})
+    session.query(Module).filter(Module.name == 'M5A').update({"gpio": 17, 'io_type': 'input'})
+    session.query(Module).filter(Module.name == 'M5B').update({"gpio": 18, 'io_type': 'input'})
+    session.query(Module).filter(Module.name == 'M5C').update({"gpio": 19, 'io_type': 'input'})
+    session.query(Module).filter(Module.name == 'M6A').update({"gpio": 20, 'io_type': 'input'})
+    session.query(Module).filter(Module.name == 'M6B').update({"gpio": 21, 'io_type': 'input'})
+    session.query(Module).filter(Module.name == 'M6C').update({"gpio": 22, 'io_type': 'input'})
+    session.query(Module).filter(Module.name == 'M7A').update({"gpio": 23, 'io_type': 'input'})
+    session.query(Module).filter(Module.name == 'M7B').update({"gpio": 24, 'io_type': 'input'})
+    session.query(Module).filter(Module.name == 'M7C').update({"gpio": 25, 'io_type': 'input'})
     session.commit()
-    for name, gpio in session.query(Module.name, Module.gpio):
-        print(name, gpio)
 
 if not path.exists(SQL_DATABASE_PATH):
     print 'criando DataBase'

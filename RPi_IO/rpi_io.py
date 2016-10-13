@@ -7,12 +7,6 @@ from models import Event_Log
 from time import sleep
 from sys import stdout
 
-# Set up GPIO using BCM numbering
-GPIO.setmode(GPIO.BCM)
-GPIO.setwarnings(False)
-GPIO.setup(26, GPIO.OUT, initial=GPIO.LOW)
-GPIO.setup(27, GPIO.OUT, initial=GPIO.LOW)
-
 # Modules pins and description
 M1A = session.query(Module).filter(Module.name == 'M1A').first()
 M1B = session.query(Module).filter(Module.name == 'M1B').first()
@@ -42,6 +36,14 @@ input_pins = [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 16, 17, 18, 19, 20,
 
 # Statup outputs BCM pin
 output_pins = [26, 27]
+
+def main():
+    # Set up GPIO using BCM numbering
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setwarnings(False)
+    GPIO.setup(26, GPIO.OUT, initial=GPIO.LOW)
+    GPIO.setup(27, GPIO.OUT, initial=GPIO.LOW)
+
 
 def modo0():
     for pin in input_pins:
@@ -108,6 +110,7 @@ def switch_on(_M):
     GPIO.setmode(GPIO.BCM)
     GPIO.setwarnings(False)
     if GPIO.gpio_function(_M.gpio) == 0:
+        GPIO.setup(_M.gpio, GPIO.OUT, initial=GPIO.LOW)
         GPIO.output(_M.gpio, GPIO.HIGH)
         _M.status = True
         session.commit()
@@ -126,6 +129,7 @@ def switch_off(_M):
     GPIO.setmode(GPIO.BCM)
     GPIO.setwarnings(False)
     if GPIO.gpio_function(_M.gpio) == 0:
+        GPIO.setup(_M.gpio, GPIO.OUT, initial=GPIO.HIGH)
         GPIO.output(_M.gpio, GPIO.LOW)
         _M.status = False
         session.commit()
@@ -149,6 +153,10 @@ def reset_pin(_M, _time):
     else:
         print 'ERROR! This pin is set as a input'
 
+def softreset(_host):
+    from subprocess import call
+    call(["net", "rpc", "shutdown", "-r", "-I", "192.168.1.21", "-U", "Administrador%SemParar"])
+
 def discovery_mods(_MA, _MB, _MC):
     import RPi.GPIO as GPIO
     from models import session
@@ -160,7 +168,7 @@ def discovery_mods(_MA, _MB, _MC):
     GPIO.setmode(GPIO.BCM)
     GPIO.setwarnings(False)
 
-    if GPIO.input(_MA.gpio) == 1 and GPIO.input(_MB.gpio) == 0:
+    if GPIO.input(_MA.gpio) == 0 and GPIO.input(_MB.gpio) == 1:
         GPIO.setup(_MA.gpio, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
         GPIO.setup(_MB.gpio, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
         GPIO.setup(_MC.gpio, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
@@ -171,7 +179,7 @@ def discovery_mods(_MA, _MB, _MC):
         _MC.io_type = 'input'
         _MC.rpull = False
         session.commit()
-    elif GPIO.input(_MA.gpio) == 0 and GPIO.input(_MB.gpio) == 1:
+    elif GPIO.input(_MA.gpio) == 1 and GPIO.input(_MB.gpio) == 0:
         GPIO.setup(_MA.gpio, GPIO.OUT, initial=GPIO.LOW)
         GPIO.setup(_MB.gpio, GPIO.OUT, initial=GPIO.LOW)
         GPIO.setup(_MC.gpio, GPIO.OUT, initial=GPIO.LOW)
@@ -205,4 +213,7 @@ def cleanup_pins():
     GPIO.setmode(GPIO.BCM)
     GPIO.setwarnings(False)
     GPIO.cleanup()
+
+if __name__ == "__main__":
+    main()
 

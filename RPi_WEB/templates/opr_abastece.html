@@ -1,0 +1,257 @@
+<meta http-equiv="refresh" content="5; URL=/opr">
+{% extends "base.html" %}
+{% block content %}
+  <div class="row">
+    <div class="slot-io col-md-3">
+      <h3 class="text-center">Pista 01</h3>
+      <div class="module-io row">
+        <h5 class="text-center"><b>Câmera OCR</b></h5>
+        <div class="col-sm-6 col">
+          {% if M1[0].status == false %}
+            <a href="{{M1[0].name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+          {% elif M1[0].status == true %}
+            <a href="{{M1[0].name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+          {% endif %}
+        </div>
+        <div class="col-sm-6 col">
+          <a href="{{M1[0].name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+        </div>
+      </div>
+      <div class="module-io row">
+        <h5 class="text-center"><b>Câmera Lateral</b></h5>
+        <div class="col-sm-6 col">
+          {% if M1[1].status == false %}
+            <a href="{{M1[1].name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+          {% elif M1[1].status == true %}
+            <a href="{{M1[1].name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+          {% endif %}
+        </div>
+        <div class="col-sm-6 col">
+          <a href="{{M1[1].name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+        </div>
+      </div>
+      <div class="module-io row">
+        <h5 class="text-center"><b>Sensor Ultrasom</b></h5>
+        <div class="col-sm-6 col">
+          {% if M1[2].status == false %}
+            <a href="{{M1[2].name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+          {% elif M1[2].status == true %}
+            <a href="{{M1[2].name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+          {% endif %}
+        </div>
+        <div class="col-sm-6 col">
+          <a href="{{M1[2].name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+        </div>
+      </div>
+      <div class="module-io row">
+        <h5 class="text-center"><b>Antena 915</b></h5>
+        <div class="col-sm-6 col">
+          {% if M2[0].status == false %}
+            <a href="{{M2[0].name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+          {% elif M2[0].status == true %}
+            <a href="{{M2[0].name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+          {% endif %}
+        </div>
+        <div class="col-sm-6 col">
+          <a href="{{M2[0].name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+        </div>
+      </div>
+    </div>
+    <div class="slot-io col-md-3">
+      <h3 class="text-center">Pista 02</h3>
+      <div class="module-io row">
+        <h5 class="text-center"><b>Câmera OCR</b></h5>
+        <div class="col-sm-6 col">
+          {% if M2[1].status == false %}
+            <a href="{{M2[1].name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+          {% elif M2[1].status == true %}
+            <a href="{{M2[1].name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+          {% endif %}
+        </div>
+        <div class="col-sm-6 col">
+          <a href="{{M2[1].name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+        </div>
+      </div>
+      <div class="module-io row">
+        <h5 class="text-center"><b>Câmera Lateral</b></h5>
+        <div class="col-sm-6 col">
+          {% if M2[2].status == false %}
+            <a href="{{M2[2].name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+          {% elif M2[2].status == true %}
+            <a href="{{M2[2].name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+          {% endif %}
+        </div>
+        <div class="col-sm-6 col">
+          <a href="{{M2[2].name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+        </div>
+      </div>
+      <div class="module-io row">
+        <h5 class="text-center"><b>Sensor Ultrasom</b></h5>
+        <div class="col-sm-6 col">
+          {% if M3[0].status == false %}
+            <a href="{{M3[0].name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+          {% elif M3[0].status == true %}
+            <a href="{{M3[0].name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+          {% endif %}
+        </div>
+        <div class="col-sm-6 col">
+          <a href="{{M3[0].name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+        </div>
+      </div>
+      <div class="module-io row">
+        <h5 class="text-center"><b>Antena 915</b></h5>
+        <div class="col-sm-6 col">
+          {% if M3[1].status == false %}
+            <a href="{{M3[1].name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+          {% elif M3[1].status == true %}
+            <a href="{{M3[1].name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+          {% endif %}
+        </div>
+        <div class="col-sm-6 col">
+          <a href="{{M3[1].name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+        </div>
+      </div>
+    </div>
+    <div class="slot-io col-md-3">
+      <h3 class="text-center">Painel</h3>
+      <div class="module-io row">
+        <h5 class="text-center"><b>Schalter</b></h5>
+        <div class="col-sm-6 col">
+          <a href="{{M3[2].name}}/softreset" class="btn btn-block btn-sm btn-warning" role="button">Soft Reset</a> 
+        </div>
+        <div class="col-sm-6 col">
+          <a href="{{M3[2].name}}/reset" class="btn btn-block btn-sm btn-danger" role="button">Hard Reset</a>
+        </div>
+      </div>
+      <div class="module-io row">
+        <h5 class="text-center"><b>Switch 01</b></h5>
+        <div class="col-sm-6 col">
+          {% if M4[0].status == false %}
+            <!--<a href="{{M4[0].name}}/on" class="btn btn-block btn-sm btn-success.disable" role="button">ON</a>-->
+            <a href="#" class="btn btn-block btn-sm btn-success.disable" role="button">ON</a>
+          {% elif M4[0].status == true %}
+            <!--<a href="{{M4[0].name}}/off" class="btn btn-block btn-sm btn-danger.disable" role="button">OFF</a>-->
+            <a href="#" class="btn btn-block btn-sm btn-danger.disable" role="button">OFF</a>
+          {% endif %}
+        </div>
+        <div class="col-sm-6 col">
+          <a href="{{M4[0].name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+        </div>
+      </div>
+      <div class="module-io row">
+        <h5 class="text-center"><b>Vago</b></h5>
+        <div class="col-sm-6 col">
+          {% if M4[1].status == false %}
+            <!--<a href="{{M4[1].name}}/on" class="btn btn-block btn-sm btn-success.disable" role="button">ON</a>-->
+            <a href="#" class="btn btn-block btn-sm btn-success.disable" role="button">ON</a>
+          {% elif M4[1].status == true %}
+            <!--<a href="{{M4[1].name}}/off" class="btn btn-block btn-sm btn-danger.disable" role="button">OFF</a>-->
+            <a href="#" class="btn btn-block btn-sm btn-danger.disable" role="button">OFF</a>
+          {% endif %}
+        </div>
+        <div class="col-sm-6 col">
+          <a href="{{M4[1].name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+        </div>
+      </div>
+      <div class="module-io row">
+        <h5 class="text-center"><b>Concentrador EzTec</b></h5>
+        <div class="col-sm-6 col">
+          {% if M4[2].status == false %}
+            <a href="{{M4[2].name}}/on" class="btn btn-block btn-sm btn-success" role="button">ON</a>
+          {% elif M4[2].status == true %}
+            <a href="{{M4[2].name}}/off" class="btn btn-block btn-sm btn-danger" role="button">OFF</a>
+          {% endif %}
+        </div>
+        <div class="col-sm-6 col">
+          <a href="{{M4[2].name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+        </div>
+      </div>
+    </div>
+    <div class="slot-io col-md-3">
+      <h3 class="text-center">Escritório</h3>
+      <div class="module-io row">
+        <h5 class="text-center"><b>Servidor</b></h5>
+        <div class="col-sm-6 col">
+          <a href="{{M5[0].name}}/softreset" class="btn btn-block btn-sm btn-warning" role="button">Soft Reset</a> 
+        </div>
+        <div class="col-sm-6 col">
+          <a href="{{M5[0].name}}/reset" class="btn btn-block btn-sm btn-danger" role="button">Hard Reset</a>
+        </div>
+      </div>
+      <div class="module-io row">
+        <h5 class="text-center"><b>Modem ADSL</b></h5>
+        <div class="col-sm-6 col">
+          {% if M5[1].status == false %}
+            <!--<a href="{{M5[1].name}}/on" class="btn btn-block btn-sm btn-success.disable" role="button">ON</a>-->
+            <a href="#" class="btn btn-block btn-sm btn-success.disable" role="button">ON</a>
+          {% elif M5[1].status == true %}
+            <!--<a href="{{M5[1].name}}/off" class="btn btn-block btn-sm btn-danger.disable" role="button">OFF</a>-->
+            <a href="#" class="btn btn-block btn-sm btn-danger.disable" role="button">OFF</a>
+          {% endif %}
+        </div>
+        <div class="col-sm-6 col">
+          <a href="{{M5[1].name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+        </div>
+      </div>
+      <div class="module-io row">
+        <h5 class="text-center"><b>Router Hongdian</b></h5>
+        <div class="col-sm-6 col">
+          {% if M5[2].status == false %}
+            <!--<a href="{{M5[2].name}}/on" class="btn btn-block btn-sm btn-success.disable" role="button">ON</a>-->
+            <a href="#" class="btn btn-block btn-sm btn-success.disable" role="button">ON</a>
+          {% elif M5[2].status == true %}
+            <!--<a href="{{M5[2].name}}/off" class="btn btn-block btn-sm btn-danger.disable" role="button">OFF</a>-->
+            <a href="#" class="btn btn-block btn-sm btn-danger.disable" role="button">OFF</a>
+          {% endif %}
+        </div>
+        <div class="col-sm-6 col">
+          <a href="{{M5[2].name}}/reset" class="btn btn-block btn-sm btn-warning" role="button">Reset</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="slot-io col-md-12">
+      <h5 class="text-center"><b>Monitoramento</b></h5>
+      <div class="module-io col-md-6">
+        <h5 class="text-center"><b>Entrada No-break</b></h5>
+        {% if M7[0].status == false %}
+          <div class="status-success col-md-10 col-md-offset-1">
+            <h6 class="text-center"><b>OK</b></h6>
+          </div>
+        {% elif M7[0].status == true %}
+          <div class="status-danger col-md-10 col-md-offset-1">
+            <h6 class="text-center"><b>Falha<b></h6>
+          </div>
+        {% endif %}
+      </div>
+      <div class="module-io col-md-6">
+        <h5 class="text-center"><b>Saída No-break</b></h5>
+        {% if M7[1].status == false %}
+          <div class="status-success col-md-10 col-md-offset-1">
+            <h6 class="text-center"><b>OK</b></h6>
+          </div>
+        {% elif M7[1].status == true %}
+          <div class="status-danger col-md-10 col-md-offset-1">
+            <h6 class="text-center"><b>Falha<b></h6>
+          </div>
+        {% endif %}
+      </div>
+      <!--
+      <div class="module-io col-md-4">
+        <h5 class="text-center"><b>Saída No-break Servidor</b></h5>
+        {% if M7[2].status == false %}
+          <div class="status-success col-md-10 col-md-offset-1">
+            <h6 class="text-center"><b>OK</b></h6>
+          </div>
+        {% elif M7[2].status == true %}
+          <div class="status-danger col-md-10 col-md-offset-1">
+            <h6 class="text-center"><b>Falha<b></h6>
+          </div>
+        {% endif %}
+        </div>
+      </div>
+      -->
+    </div>
+  </div>
+{% endblock %}
